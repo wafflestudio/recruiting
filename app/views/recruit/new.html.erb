@@ -1,0 +1,30 @@
+<h1>Signup Form</h1>
+<%= form_for(:applicant, :url => submit_application_path) do |f| %>
+	<div class="signup_form">
+		<div class="fields">
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+		</div>
+
+		<div class="fields">
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+		</div>
+
+		<div class="fields">
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+		</div>
+
+		<div class="fields">
+			<%= f.label :password_confirmation %>
+			<%= f.password_field :password_confirmation %>
+		</div>
+
+		<div class="actions">
+			<%= f.submit "Sign Up" %> 
+		</div>
+	</div>
+<% end %>
+
+

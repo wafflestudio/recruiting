@@ -1,0 +1,28 @@
+<h3> Step 2: Please answer the following questions </h3>
+
+<div class="form_container">
+	<%= form_tag submit_application_path do %>
+
+		<% @questions.each do |question| %>
+			<div class="question_container">
+				<div class="question_field">
+					<p> <%= question.content %> </p>
+				</div>
+				<div class="answer_field">
+				</div>
+			</div>
+		<% end %>
+
+		<%= submit_tag "Submit Your Application" %>
+	<% end %>
+
+</div>
+
+
+
+
+
+
+
+
+

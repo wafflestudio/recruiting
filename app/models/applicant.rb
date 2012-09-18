@@ -9,6 +9,7 @@ class Applicant < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
+	attr_accessible :name
   has_many :answers
 
   
