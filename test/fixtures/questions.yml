@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyString
+  question_type: 1
+  options: MyString
+  order: 1
+
+two:
+  content: MyString
+  question_type: 1
+  options: MyString
+  order: 1
