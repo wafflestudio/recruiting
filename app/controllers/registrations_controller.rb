@@ -5,12 +5,18 @@ class RegistrationsController < Devise::RegistrationsController
 	end
 
 	def update
-
+    
 	end
 
 	protected
 
 	def after_sign_up_path_for(resource)
-		new_applicant_path
-	end
+	  submit_application_form_path
+  end
+  
+  def after_sign_in_path_for(resource)
+    edit_application_form_path
+  end
+
+
 end

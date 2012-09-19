@@ -1,13 +1,16 @@
 <h3> Step 2: Please answer the following questions </h3>
 
+The current signed in user is <%= current_applicant %>
+
 <div class="form_container">
-	<%= form_tag submit_application_path do %>
+	<%= form_tag submit_application_form_path do %>
 
 		<% @questions.each do |question| %>
 			<div class="question_container">
 				<div class="question_field">
-					<p> <%= question.content %> </p>
-				</div>
+          <p> <%= question.priority %> => <%=question.content %> </p>
+          <%= text_field_tag "answers[#{question.id}]" %>
+        </div>
 				<div class="answer_field">
 				</div>
 			</div>

@@ -4,10 +4,14 @@ Recruiting::Application.routes.draw do
 
   match ':controller(/:action(/:id))(.:format)'
 
+  # Redirect the authentice_applicant! method's url
+  match 'applicants/sig_in/', :controller => 'recruit', :action => 'index'
+
 	get 'recruit/new' => 'recruit#new', :as => :new_applicant
-	post 'recruit/create' => 'recruit#create', :as => :submit_application
-	get 'recruit/step2' => 'recruit#step2', :as => :step2
-	devise_for :admin_users, ActiveAdmin::Devise.config
+	post 'recruit/create' => 'recruit#create', :as => :submit_signup_form
+	post 'recruit/step2create' => 'recruit#step2create', :as => :submit_application_form
+  get 'recruit/edit' => 'recruit#edit', :as => :edit_application_form
+  devise_for :admin_users, ActiveAdmin::Devise.config
 	
   devise_for :applicants, :controllers => {:registrations => "registrations"}
 

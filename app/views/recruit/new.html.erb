@@ -1,5 +1,17 @@
 <h1>Signup Form</h1>
-<%= form_for(:applicant, :url => submit_application_path) do |f| %>
+
+<% if @applicant.errors.any? %>
+  <div class="errors_explanation">
+    <ul>
+      <% @applicant.errors.each do |error| %>
+        <li> <%= error %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_for(:applicant, :url => submit_signup_form_path ) do |f| %>
 	<div class="signup_form">
 		<div class="fields">
 			<%= f.label :name %>
