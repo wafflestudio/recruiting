@@ -5,7 +5,7 @@ Recruiting::Application.routes.draw do
   
 
   # create an action to change the applicants state
-  match 'recruit/changestate/:id', :controller => 'recruit', :action => 'change_state', :as => :change_application_state_path
+  match 'recruit/changestate/:id', :controller => 'recruit', :action => 'change_state', :as => :change_application_state
 
 
   # Redirect the authentice_applicant! method's url

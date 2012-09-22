@@ -105,8 +105,8 @@ class RecruitController < ApplicationController
   end
  
   def change_state
-    applicant = Applicant.find(params[:applicant])
-    applicnat.process!
+    applicant = Applicant.find_by_id(params[:id])
+    applicant.process!
     redirect_to admin_applicants_path 
   end
 

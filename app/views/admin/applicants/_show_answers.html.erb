@@ -1,0 +1,25 @@
+
+<div class="panel">
+  <h3> Answers </h3>
+  <div class="panel_contents">
+    <div class="attributes_table applicant"> 
+      <table>
+        <tbody>
+    <% current_applicant.answers.each do |answer| %>
+      <tr>
+        <th><%= answer.question.content %></th>
+        <td>
+          <span><%= answer.content %></span>
+        </td>
+      </tr>
+  <% end %>
+</tbody>
+</table>
+    </div>
+
+
+
+  </div>
+<div>
+
+
