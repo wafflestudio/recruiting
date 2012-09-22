@@ -1,7 +1,24 @@
-
 <h2> Welcome to Wafflestudio </h2>
 
-
+<div id="countdownTimer"></div>
+<input type="text" id="deadlinePicker" />
+<script type="text/javascript">
+$('#deadlinePicker').datepicker({dateFormat: "y,mm,dd"});
+$(document).ready(function() {
+  var timer = setInterval(function(){
+      var seconds = remaining.getSeconds('October 3, 2012');
+      
+      var countdownTimer = remaining.getStringDigital(seconds);
+      
+      if (countdownTimer == '') {
+          $('#countdownTimer').html('...');
+          clearInterval(timer);
+      } else {
+          $('#countdownTimer').html(countdownTimer);
+      }
+  }, 500);
+})
+</script>
 
 <%= link_to "Sign up", new_applicant_path  %>
 <br /><br />
