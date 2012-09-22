@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	
+
+  <% if !(params[:alert].nil?) %>
+    <p><%= params[:alert] %></p>
+  <% end %>
+
+
 	
 	<%= yield %>
 

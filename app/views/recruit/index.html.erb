@@ -1,6 +1,12 @@
 
+<h2> Welcome to Wafflestudio </h2>
+
+
+
 <%= link_to "Sign up", new_applicant_path  %>
-<br />
+<br /><br />
+<%= render "login_items" %>
+<p>Already a member, sigin </p>
 
 
 <% if !applicant_signed_in? %>
@@ -25,6 +31,4 @@
 
 		<% end %>
 	</div>
-<% else %>
-	<%= link_to "Edit your application", edit_applicant_registration_path %>
 <% end %>

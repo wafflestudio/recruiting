@@ -8,6 +8,9 @@ class AdminConfig < ActiveRecord::Base
     self.deadline = Time.now
   end
 
+  def SetDeadline(time)
+    deadline = time
+  end
 
 
 end

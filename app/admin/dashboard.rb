@@ -17,7 +17,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
-        panel "Add a question" do
+        panel "Set the deadline" do
         end
       end
 

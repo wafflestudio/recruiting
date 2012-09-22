@@ -11,11 +11,11 @@ class RegistrationsController < Devise::RegistrationsController
 	protected
 
 	def after_sign_up_path_for(resource)
-	  submit_application_form_path
+	  submit_signup_form_path ## recruit#create
   end
   
   def after_sign_in_path_for(resource)
-    edit_application_form_path
+    edit_application_form_path ## Recruit#edit
   end
 
 

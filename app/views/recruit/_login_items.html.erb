@@ -1,8 +1,9 @@
 <div>
 	<% if applicant_signed_in? %>
-		<li>
+
 		<%= link_to "Log out", destroy_applicant_session_path, :method => :delete %>
-		</li>
+ | 
+	<%= link_to "Edit your application", edit_applicant_registration_path %>
 	<% end %>
 
 </div>
