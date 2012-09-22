@@ -17,9 +17,15 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
+
         panel "Set the deadline" do
         end
-      end
+
+        panel "Set the current Order" do
+        end
+
+
+      end # column2
 
 
     end

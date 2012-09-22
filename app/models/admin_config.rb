@@ -2,7 +2,7 @@ class AdminConfig < ActiveRecord::Base
   include Singleton
 
 
-  attr_accessible :deadline
+  attr_accessible :deadline, :current_order
  
   def initialize
     self.deadline = Time.now

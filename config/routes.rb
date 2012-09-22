@@ -3,7 +3,10 @@ Recruiting::Application.routes.draw do
 
   root :to => 'recruit#index'
   match 'recruit/index' => 'recruit#index', :as => :home_page  
-  
+
+  # To mark a project as a featured project
+  post 'projects/mark_as_featured/:id' => 'projects#mark_as_featured', :as => :mark_project_as_featured
+
   # Disable the default page for creating applicants made by devise and redirect to our index page
   match 'applicants/sign_up' => 'recruit#new'
   
@@ -13,7 +16,8 @@ Recruiting::Application.routes.draw do
 
 
   # Redirect the authentice_applicant! method's url
-  match 'applicants/sign_in/', :controller => 'recruit', :action => 'index'
+  get 'applicants/sign_in/', :controller => 'recruit', :action => 'index'
+  
 
 	get 'recruit/new' => 'recruit#new', :as => :new_applicant
 	post 'recruit/create' => 'recruit#create', :as => :submit_signup_form

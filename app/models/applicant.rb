@@ -9,7 +9,7 @@ class Applicant < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-	attr_accessible :name
+	attr_accessible :name, :phone
   has_many :answers
 
   scope :in_progress, where("applicants.processed IS NULL")
@@ -19,14 +19,18 @@ class Applicant < ActiveRecord::Base
   IN_PROGRESS = "in_progress"
 
   def process!
-    self.processed = 1
-    self.save
+    # Doesn't check for the validations
+    self.update_attribute('processed', 1)
   end
 
   def state
    processed.nil? ? IN_PROGRESS : COMPLETE
   end
 
-  
+  # Validations
+  validates_presence_of :email, :password, :name, :phone
+  validates_uniqueness_of :email
+  validates_confirmation_of :password, :on => :create
+  validates_length_of :password, :minimum => 4
   
 end

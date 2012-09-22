@@ -9,7 +9,10 @@ ActiveAdmin.register Applicant do
   scope :all, :default => true
   scope :in_progress
   scope :complete
-  
+
+  sidebar :applicant_stats, :partial => "applicant_stats"
+
+
   index do
 
     column("State") {|applicant| status_tag(applicant.state)  }

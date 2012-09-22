@@ -1,0 +1,6 @@
+
+<p> Total Applicants: <strong><%= Applicant.where(:order => 1).count %></strong></p>
+<p> Total Pending   : <strong><%= Applicant.where(:order => 1).where(:processed => 0).count %></strong></p>
+
+
+
