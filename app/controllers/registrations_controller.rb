@@ -5,7 +5,12 @@ class RegistrationsController < Devise::RegistrationsController
 	end
 
 	def update
-    
+    answers = params[:answer]
+    answers.each do |question_id, answer| 
+      temp = Answer.where("question_id = ? AND applicant_id = ?", question_id, current_applicant.id).first
+      temp.update_attributes(:content => answer)
+    end
+    redirect_to edit_applicant_registration_path(current_applicant)
 	end
 
 	protected

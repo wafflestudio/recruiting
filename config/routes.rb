@@ -1,7 +1,11 @@
 Recruiting::Application.routes.draw do
   ActiveAdmin.routes(self)
 
+  root :to => 'recruit#index'
   match 'recruit/index' => 'recruit#index', :as => :home_page  
+  
+  # Disable the default page for creating applicants made by devise and redirect to our index page
+  match 'applicants/sign_up' => 'recruit#new'
   
 
   # create an action to change the applicants state
@@ -20,6 +24,5 @@ Recruiting::Application.routes.draw do
   devise_for :applicants, :controllers => {:registrations => "registrations"}
 
   match ':controller(/:action(/:id))(.:format)'
-  root :to => 'recruit#index'
 
 end

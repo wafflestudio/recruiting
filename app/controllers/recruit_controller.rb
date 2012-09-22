@@ -13,7 +13,6 @@ class RecruitController < ApplicationController
 
   def index
     @projects = Project.order("date_started DESC")
-
   end
 
   def new
@@ -83,23 +82,6 @@ class RecruitController < ApplicationController
     redirect_to home_page_path  #, :notice => "Successfully Submitted"
   end
 
-  def step2edit
-  end
-  
-  def step2update
-
-  end
-
-
-  def update 
-  # TODO after the successfull update of the login data 
-  # redirect the applicant to the step2edit page
- 
-  end
-
-  def destroy
-  
-  end
 
   def print
   end
