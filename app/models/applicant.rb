@@ -12,5 +12,21 @@ class Applicant < ActiveRecord::Base
 	attr_accessible :name
   has_many :answers
 
+  scope :in_progress, where("applicants.processed IS NULL")
+  scope :complete, where("applicants.processed IS NOT NULL")
+
+  COMPLETE = "complete"
+  IN_PROGRESS = "in_progress"
+
+  def process!
+    self.processed = 1
+    self.save
+  end
+
+  def state
+   processed.nil? ? IN_PROGRESS : COMPLETE
+  end
+
+  
   
 end
