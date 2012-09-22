@@ -1,5 +1,8 @@
 ActiveAdmin.register Applicant do
-  
+
+  # Block the admin to edit or destroy the application
+  actions :all, :except => [:edit, :destroy, :new]
+
   filter :name
   filter :email
 
@@ -19,12 +22,14 @@ ActiveAdmin.register Applicant do
   action_item :only => :show do
     link_to "Check as complete", change_application_state_path(resource)
   end
-  
+ 
+  action_item :only => :show do
+    link_to "Back to Applicants", admin_applicants_path
+  end
+
+
   show do |ad|
     @current_applicant = Applicant.find(params[:id])
-    logger.info "#####################"
-    logger.info params[:id]
-    logger.info @current_applicant.name
     @current_questions = Question.where("order = ?", @current_applicant.order)
 
     attributes_table do

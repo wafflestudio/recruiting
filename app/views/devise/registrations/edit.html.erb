@@ -12,7 +12,7 @@
 
   <% @answers.each do |a| %>
     <p><%= a.question.content %></p>
-    <%= text_field_tag "answer[#{a.question.id}]", a.content %>
+    <%= text_area_tag "answers[#{a.question.id}]", a.content %>
   <% end %>
 
   <div><%= f.submit "Update" %></div>
