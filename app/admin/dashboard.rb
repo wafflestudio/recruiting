@@ -2,6 +2,11 @@ ActiveAdmin.register_page "Dashboard" do
 
   menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
 
+  sidebar "Applicant Stats" do
+    render("/admin/applicants/applicant_stats.html.erb", :model => 'applicants')
+  end
+
+
   content :title => proc{ I18n.t("active_admin.dashboard") } do
 
     columns do
@@ -23,6 +28,7 @@ ActiveAdmin.register_page "Dashboard" do
 
         panel "Set the current Order" do
         end
+        
 
 
       end # column2
