@@ -24,16 +24,16 @@
             <span><%= current_applicant.phone %></span>
          </div>
       </div>
-      <% @answers.each do |a| %>
-         <div class="control-group">
-            <label><%= a.question.priority %> => <%= a.question.content %></label>
-            <div class="controls">
-               <%= text_area_tag "answers[#{a.question.id}]", a.content %>
-            </div>
-         </div>
+      <% @questions.each do |question| %>
+          <% a = question.answers.where(:applicant_id => current_applicant.id).first %>
+          <div class="controls">
+              <label><%= question.priority %>. <%= question.content %></label>
+              <%= text_area_tag "answers[#{question.id}]", (a.content if !a.nil?), :style => "width: 500px; height: 300px;" %>
+          </div>
       <% end %>
       <div class="control-group">
          <div class="controls">
+            <br />
             <%= link_to "로그아웃", destroy_applicant_session_path, :method => :delete %>
          </div>
       </div>

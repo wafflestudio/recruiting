@@ -23,14 +23,10 @@
          </div>
       </div>
       <% @questions.each do |question| %>
-         <div class="control-group">
-            <label><%= question.priority %> => <%=question.content %></label>
-            <div class="controls">
-               <%= text_field_tag "answers[#{question.id}]" %>
-            </div>
-         </div>
-         <div class="answer_field">
-         </div>
+          <div class="controls">
+              <label><%= question.priority %>. <%=question.content %></label>
+              <%= text_area_tag "answers[#{question.id}]", "",:style => "width: 500px; height: 300px;" %>
+          </div>
       <% end %>
    <% end %>
 </div>

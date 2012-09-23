@@ -1,16 +1,22 @@
 class RegistrationsController < Devise::RegistrationsController
-
   def edit
     @answers = current_applicant.answers
+    @questions = Question.where(:order => current_order).order("priority asc")
   end
 
   def update
     answers = params[:answers]
     answers.each do |question_id, answer| 
       temp = Answer.where("question_id = ? AND applicant_id = ?", question_id, current_applicant.id).first
-      temp.update_attributes(:content => answer)
+      if temp.nil?
+        temp = Answer.new(:applicant_id => current_applicant.id, :question_id => question_id)
+        temp.content = answer
+        temp.save
+      else
+        temp.update_attributes(:content => answer)
+      end
     end
-    redirect_to home_page_path, :notice => "Your changes were saved"
+    redirect_to edit_applicant_registration_path, :notice => "Your changes were saved"
   end
 
   protected

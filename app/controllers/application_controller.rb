@@ -5,11 +5,9 @@ class ApplicationController < ActionController::Base
   private
 
   def current_order
-    return 1
+    return 9
     #return Adminconfig.first.current_order
   end
 
   helper_method :current_order
-
-
 end
