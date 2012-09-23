@@ -9,9 +9,14 @@ class RecruitController < ApplicationController
     true
   end
 
+  def home
+    @projects = Project.order("date_started DESC")
+  end
 
   def index
-    @projects = Project.order("date_started DESC")
+    if applicant_signed_in?
+      redirect_to edit_applicant_registration_path
+    end
   end
 
   def new    

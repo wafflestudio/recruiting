@@ -1,0 +1,74 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    background: #ff5400;
+}
+div.container {
+    height: 100%;
+    background: white;
+    margin-left: 25%;
+    width: 100%;
+    overflow: hidden;
+}
+div.under-line {
+    border-bottom: 2px solid #ff5400;
+}
+div.under-line-left {
+    margin-top: 120px;
+    padding: 0 10px 0 30px;
+    width: 800px;
+    h2 {
+        margin: 0;
+        line-height: 1;
+        font-size: 60px;
+    }
+    a {
+        font-size: 14px;
+    }
+}
+div.under-line-right {
+    margin-left: 300px;
+    padding-left: 100px;
+    height: 45px;
+    line-height: 1;
+    span.symbol {
+        color: #ff9999;
+        font-size: 30px;
+        margin-bottom: 10px;
+        vertical-align: text-bottom;
+    }
+    a {
+        color: black;
+        text-decoration: none;
+        span {
+            font-size: 45px;
+        }
+        padding-left: 15px;
+        font-size: 35px;
+        margin: 0;
+    }
+}
+div.sub-container {
+    margin: 65px 0 65px 250px;
+}
+label.control-label {
+    width: 120px !important;
+}
+div.controls {
+    margin-left: 140px !important;
+    span {
+        line-height: 2em;
+    }
+}
+div#notice {
+    float: right;
+    margin-top: 120px;
+    width: auto;
+    div {
+        padding: 10px;
+        font-size: 25px;
+        text-align: right;
+    }
+}

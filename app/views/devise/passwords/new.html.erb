@@ -1,12 +1,25 @@
-<h2>Forgot your password?</h2>
+<div class="under-line under-line-left">
+   <h2>비밀번호 찾기</h2>
+</div>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="sub-container">
+   <%= devise_error_messages! %>
+   <%= form_for(resource, :html => {:class => "form-horizontal"}, :as => resource_name, :url => password_path(resource_name), :method => :post) do |f| %>
+      <div class="control-group">
+         <%= f.label :email, "이메일", :class => "control-label" %>
+         <div class="controls">
+            <%= f.text_field :email %>
+         </div>
+      </div>
+      <div class="control-group">
+         <div class="controls">
+            <%= render "devise/shared/links" %>
+         </div>
+      </div>
+   <% end %>
+</div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div class="under-line under-line-right">
+   <span class="symbol">>>></span>
+   <%= link_to_function "<span>찾</span>기".html_safe, "$('form').submit();" %>
+</div>

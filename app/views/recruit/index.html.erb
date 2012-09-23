@@ -1,51 +1,32 @@
-<h2> Welcome to Wafflestudio </h2>
+<div class="under-line under-line-left">
+   <h2>지원서 조회하기</h2>
+</div>
 
-<div id="countdownTimer"></div>
-<input type="text" id="deadlinePicker" />
-<script type="text/javascript">
-$('#deadlinePicker').datepicker({dateFormat: "y,mm,dd"});
-$(document).ready(function() {
-  var timer = setInterval(function(){
-      var seconds = remaining.getSeconds('October 3, 2012');
-      
-      var countdownTimer = remaining.getStringDigital(seconds);
-      
-      if (countdownTimer == '') {
-          $('#countdownTimer').html('...');
-          clearInterval(timer);
-      } else {
-          $('#countdownTimer').html(countdownTimer);
-      }
-  }, 500);
-})
-</script>
+<div class="sub-container">
+   <% if !applicant_signed_in? %>
+      <%= form_for("applicant", :html => {:class => "form-horizontal"}, :url => applicant_session_path) do |f| %>
+         <div class="control-group">
+            <%= f.label :email, "이메일", :class => "control-label" %>
+            <div class="controls">
+               <%= f.text_field :email %>
+            </div>
+         </div>
+         <div class="control-group">
+            <%= f.label :password, "비밀번호", :class => "control-label" %>
+            <div class="controls">
+               <%= f.password_field :password %>
+            </div>
+         </div>
+         <div class="control-group">
+            <div class="controls">
+               <%= link_to "비밀번호를 잊으셨나요?", new_password_path('applicant') %>
+            </div>
+         </div>
+      <% end %>
+   <% end %>
+</div>
 
-<%= link_to "Sign up", new_applicant_path  %>
-<br /><br />
-<%= render "login_items" %>
-<p>Already a member, sigin </p>
-
-
-<% if !applicant_signed_in? %>
-	<div class="login-form">
-		<%= form_for("applicant", :url => applicant_session_path) do |f| %>
-			<div class="field">
-				<%= f.label :email %><br />
-				<%= f.text_field :email %>
-			</div>
-
-			<div class="field">
-				<%= f.label :password %><br />
-				<%= f.password_field :password %>
-			</div>
-
-			<div class="actions">
-				<%= f.submit "Log in" %>
-			</div>
-
-			<%= link_to "Forgot your password", new_password_path('applicant') %>
-
-
-		<% end %>
-	</div>
-<% end %>
+<div class="under-line under-line-right">
+   <span class="symbol">>>></span>
+   <%= link_to_function "<span>조</span>회하기".html_safe, "$('form').submit();" %>
+</div>

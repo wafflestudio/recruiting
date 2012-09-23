@@ -1,26 +1,46 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="under-line under-line-left">
+   <h2>지원서 작성하기<span><%= link_to "지원 취소하기", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></span></h2>
+</div>
 
 <%= devise_error_messages! %>
 
-<p> Name </p> <%= current_applicant.name %> 
+<div class="sub-container">
+   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-horizontal", :method => :put }) do |f| %>
+      <div class="control-group">
+         <%= label_tag :name, "이름", :class => "control-label" %>
+         <div class="controls">
+            <span><%= current_applicant.name %></span>
+         </div>
+      </div>
+      <div class="control-group">
+         <%= label_tag :email, "이메일", :class => "control-label" %>
+         <div class="controls">
+            <span><%= current_applicant.email %></span>
+         </div>
+      </div>
+      <div class="control-group">
+         <%= label_tag :phone, "연락처", :class => "control-label" %>
+         <div class="controls">
+            <span><%= current_applicant.phone %></span>
+         </div>
+      </div>
+      <% @answers.each do |a| %>
+         <div class="control-group">
+            <label><%= a.question.priority %> => <%= a.question.content %></label>
+            <div class="controls">
+               <%= text_area_tag "answers[#{a.question.id}]", a.content %>
+            </div>
+         </div>
+      <% end %>
+      <div class="control-group">
+         <div class="controls">
+            <%= link_to "로그아웃", destroy_applicant_session_path, :method => :delete %>
+         </div>
+      </div>
+   <% end %>
+</div>
 
-<p> Email </p> <%= current_applicant.email %>
-
-<p> Member Since </p> <%= current_applicant.created_at %>
-
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-
-  <% @answers.each do |a| %>
-    <p><%= a.question.content %></p>
-    <%= text_area_tag "answers[#{a.question.id}]", a.content %>
-  <% end %>
-
-  <div><%= f.submit "Update" %></div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+<div class="under-line under-line-right">
+   <span class="symbol">>>></span>
+   <%= link_to_function "<span>수</span>정하기".html_safe, "$('form').submit();" %>
+</div>

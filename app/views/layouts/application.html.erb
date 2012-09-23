@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Recruiting</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+   <head>
+      <title>와플스튜디오 리크루팅</title>
+      <%= stylesheet_link_tag    "application", :media => "all" %>
+      <%= javascript_include_tag "application" %>
+      <%= csrf_meta_tags %>
 
-  <% if !(params[:alert].nil?) %>
-    <p><%= params[:alert] %></p>
-  <% end %>
+      <meta name="description" content="와플스튜디오의 2012년 2학기 리크루팅 페이지입니다." />
+      <meta name="author" content="아리프, 김진억, 김택민" />
+      <meta property="og:title"       content="와플스튜디오 리크루팅 페이지" />
+      <meta property="og:image"       content="http://gallery.wafflestudio.com/assets/logo-0182fb5e388e840448c7cf5def949060.png" />
+      <meta property="og:description" content="와플스튜디오의 2012년 2학기 리크루팅 페이지입니다." />
+      <meta property="og:type"        content="website" />
+      <meta property="og:url"         content="http://recruit.wafflestudio.com/" />
+   </head>
+   <body>
+      <% if !(params[:alert].nil?) %>
+         <p><%= params[:alert] %></p>
+      <% end %>
 
+      <div class="container">
+         <%= yield %>
+      </div>
 
-	
-	<%= yield %>
+      <!--
+      <div id="notice">
+         <div id="countdownTimer"></div>
+         <input type="text" id="deadlinePicker" />
+         <script type="text/javascript">
+            $('#deadlinePicker').datepicker({dateFormat: "y,mm,dd"});
+            $(document).ready(function() {
+               var timer = setInterval(function(){
+                  var seconds = remaining.getSeconds('October 3, 2012');
 
-</body>
+                  var countdownTimer = remaining.getStringDigital(seconds);
+
+                  if (countdownTimer == '') {
+                     $('#countdownTimer').html('...');
+                     clearInterval(timer);
+                  } else {
+                     $('#countdownTimer').html(countdownTimer);
+                  }
+               }, 500);
+            })
+         </script>
+      </div>
+      -->
+   </body>
 </html>

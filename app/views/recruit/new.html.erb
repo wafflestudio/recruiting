@@ -1,50 +1,54 @@
-<h1>Signup Form</h1>
+<div class="under-line under-line-left">
+   <h2>지원서 작성하기<%= link_to "이미 작성했습니다", home_page_path %></h2>
+</div>
 
-<% if @applicant.errors.any? %>
-  <div class="errors_explanation">
-    <ul>
-      <% @applicant.errors.full_messages.each do |error| %>
-        <li> <%= error %> </li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<div class="sub-container">
+   <% if @applicant.errors.any? %>
+      <div class="errors_explanation">
+         <ul>
+            <% @applicant.errors.full_messages.each do |error| %>
+               <li> <%= error %> </li>
+            <% end %>
+         </ul>
+      </div>
+   <% end %>
 
+   <%= form_for(:applicant, :html => {:class => "form-horizontal"}, :url => submit_signup_form_path) do |f| %>
+      <div class="control-group">
+         <%= f.label :name, "이름", :class => "control-label" %>
+         <div class="controls">
+            <%= f.text_field :name %>
+         </div>
+      </div>
 
-<%= form_for(:applicant, :url => submit_signup_form_path ) do |f| %>
-	<div class="signup_form">
-		<div class="fields">
-			<%= f.label :name %>
-			<%= f.text_field :name %>
-		</div>
+      <div class="control-group">
+         <%= f.label :email, "이메일", :class => "control-label" %>
+         <div class="controls">
+            <%= f.text_field :email %>
+         </div>
+      </div>
+      <div class="control-group">
+         <%= f.label :phone, "연락처", :class => "control-label" %>
+         <div class="controls">
+            <%= f.text_field :phone, :placeholder => "010-1234-0000" %>
+         </div>
+      </div>
+      <div class="control-group">
+         <%= f.label :password, "비밀번호", :class => "control-label" %>
+         <div class="controls">
+            <%= f.password_field :password %>
+         </div>
+      </div>
+      <div class="control-group">
+         <%= f.label :password_confirmation, "비밀번호 확인", :class => "control-label" %>
+         <div class="controls">
+            <%= f.password_field :password_confirmation %>
+         </div>
+      </div>
+   <% end %>
+</div>
 
-		<div class="fields">
-			<%= f.label :email %>
-			<%= f.text_field :email %>
-		</div>
-
-    
-		<div class="fields">
-			<%= f.label :phone %>
-			<%= f.text_field :phone %>
-		</div>
-
-
-		<div class="fields">
-			<%= f.label :password %>
-			<%= f.password_field :password %>
-		</div>
-
-		<div class="fields">
-			<%= f.label :password_confirmation %>
-			<%= f.password_field :password_confirmation %>
-		</div>
-
-
-		<div class="actions">
-			<%= f.submit "Sign Up" %> 
-		</div>
-	</div>
-<% end %>
-
-
+<div class="under-line under-line-right">
+   <span class="symbol">>>></span>
+   <%= link_to_function "<span>작</span>성하기".html_safe, "$('form').submit();" %>
+</div>
