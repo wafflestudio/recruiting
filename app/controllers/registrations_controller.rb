@@ -29,7 +29,4 @@ class RegistrationsController < Devise::RegistrationsController
     submit_signup_form_path ## recruit#create
   end
 
-  def after_sign_in_path_for(resource)
-    edit_applicant_registration_path ## registrations#edit
-  end
 end

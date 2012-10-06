@@ -9,8 +9,9 @@ div.container {
     height: 100%;
     background: white;
     margin-left: 25%;
-    width: 100%;
+    width: 75%;
     overflow: hidden;
+    overflow-y: scroll;
 }
 div.under-line {
     border-bottom: 2px solid #ff5400;

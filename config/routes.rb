@@ -25,7 +25,7 @@ Recruiting::Application.routes.draw do
   get 'recruit/edit' => 'recruit#edit', :as => :edit_application_form
   devise_for :admin_users, ActiveAdmin::Devise.config
 	
-  devise_for :applicants, :controllers => {:registrations => "registrations"}
+  devise_for :applicants, :controllers => {:sessions => "sessions", :registrations => "registrations"}
 
   match ':controller(/:action(/:id))(.:format)'
 end

@@ -1,5 +1,8 @@
 <div class="under-line under-line-left">
-   <h2>지원서 작성하기<span><%= link_to "지원 취소하기", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></span></h2>
+  <h2>지원서 작성하기
+    <span><%= link_to "지원 취소하기", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></span>
+    <span><%= link_to "돌아가기", destroy_applicant_session_path, :method => :delete %></span> 
+  </h2>
 </div>
 
 <%= devise_error_messages! %>
